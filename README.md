@@ -96,4 +96,4 @@ Los bytes se envían por nibbles:
 
 #3:  0  1  0  0  [0x40]
 
-#4:  0  0  1  1  [0x30]
+#4:  0  0  1  1  [0x30]  Este nibble no se encuentra decodificado por el software saleae, es el último de la transmisión.
