@@ -68,4 +68,32 @@ En las funciones `displayCharPositionWrite` y `displayStringWrite` se agrega la 
 
 # Captura de mensaje
 
-Se conecta el analizador lógico a los pines correspondientes a las salidas digitales de la interfaz SPI (ver arriba).
+Se conecta el analizador lógico a los pines correspondientes a las salidas digitales de la interfaz SPI (ver arriba) para capturar la trama correspondiente a la impresión al display de la línea
+
+```cpp
+    displayStringWrite( "'C" );
+```
+
+En la siguiente tabla se muestran los códigos de los caracteres en el display.
+
+<picture>
+    <img src=img/table-6.1.png>
+</picture>
+
+A continuación se muestra la captura de la trama utilizando el software saleae. Los datos se envían en el nibble alto de cada byte, 0xFA es el comando de escritura.
+
+<picture>
+    <img src=img/spi.png>
+</picture>
+
+Los bytes se envían por nibbles:
+
+#N: D7 D6 D5 D4
+
+#1:  0  0  1  0  [0x20]
+
+#2:  0  1  1  1  [0x70]
+
+#3:  0  1  0  0  [0x40]
+
+#4:  0  0  1  1  [0x30]
